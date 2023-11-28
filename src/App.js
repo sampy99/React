@@ -6,6 +6,8 @@ function App() {
     <>
     <div>Sampath Chathuranga</div>
     <Main />
+    <Main />
+    <Main />
     </>
   );
 }
