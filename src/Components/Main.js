@@ -1,13 +1,13 @@
-const name = "Sandun Srimal";
+/*const name = "Sandun Srimal";
 const job = "Web Developer";
-/*
+
 const myObj = {
 name1:`${name}`,
 job1:`${job}`,
 city:"Galle",
 }*/
 
-function Main({children,name,city,job}){
+function Main({name,city,job}){
 //const {city} = myObj;
  return(
     <div>This is main component
