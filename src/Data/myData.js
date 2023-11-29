@@ -20,6 +20,11 @@ name:'Ravindu',
 city:'Rathmalana',
 job:'Front end',
 },
+{
+name:'Sasindu',
+city:'Rathmalana',
+job:'Front end',
+},
 ]
 
 export default myData;
