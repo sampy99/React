@@ -1,16 +1,21 @@
 
-import {Fragment} from "react";
+//import {Fragment} from "react";
 
 
-function Main({name,city,job}){
+function Main({name,image,city,job}){
 //const {city} = myObj;
  return(
     <div>
-    <img src="https://th.bing.com/th/id/OIP.ImSFQ72Mq4JWhG_27vVChQHaEo?rs=1&pid=ImgDetMain" alt="teddyimage"/>
-    <div>
-    <h1>{name}</h1>
-    <p><span>{city}</span></p>
-    <p><span>{job}</span></p>
+    <img src={image?
+    `${image}`
+    :`https://4.bp.blogspot.com/-rsfC6DFXa4I/UqitHvg5bqI/AAAAAAAAAOo/vFCwt1uy3j8/s1600/Sing+of+Love+Taddy+Bear.jpg`
+    }
+    alt="teddyimage"/>
+
+    <div className="mainBlockDetails">
+    <h3>{!name?`No Name`:`${name}`}</h3>
+    <p><span>{city}</span>
+ <span>{job}</span></p>
     </div>
     </div>
     );
