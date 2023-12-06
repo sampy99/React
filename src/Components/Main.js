@@ -1,23 +1,17 @@
-/*const name = "Sandun Srimal";
-const job = "Web Developer";
 
-const myObj = {
-name1:`${name}`,
-job1:`${job}`,
-city:"Galle",
-}*/
+import {Fragment} from "react";
+
 
 function Main({name,city,job}){
 //const {city} = myObj;
  return(
-    <div>This is main component
-    <ul>
-    <li>{name}</li>
-    <li>{city}</li>
-    <li>{job}</li>
-    <li>Angular</li>
-    <li>Java</li>
-    </ul>
+    <div>
+    <img src="https://th.bing.com/th/id/OIP.ImSFQ72Mq4JWhG_27vVChQHaEo?rs=1&pid=ImgDetMain" alt="teddyimage"/>
+    <div>
+    <h1>{name}</h1>
+    <p><span>{city}</span></p>
+    <p><span>{job}</span></p>
+    </div>
     </div>
     );
 }
