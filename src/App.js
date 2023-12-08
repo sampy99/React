@@ -1,6 +1,7 @@
 import "./App.css";
 import myData from "./Data/myData";
 import {useState} from "react";
+import Unit from "./Components/Unit"
 
 const App = ()=>{
 
@@ -8,6 +9,9 @@ const [imageUrl,setImageUrl] = useState('');
 const [name,setName] = useState('');
 const [city,setCity] = useState('');
 const [job,setJob] = useState('');
+
+const [myData,setMyData] = useState([]);
+console.log(myData);
 
 return(
 <div className="mainContainer">
@@ -33,12 +37,19 @@ e.preventDefault()
 setJob(e.target.value)
 }}/>
 
-<button onClick={()=>{console.log({imageUrl,name,city,job})
+<button onClick = {()=> {setMyData(pre=>{
+return[...pre,{
+image: imageUrl,
+name,
+city,
+job,
+}]
+});
 
 //Long code using if
 setImageUrl((pre)=>{
-if(pre.length>0){
-return''
+if(pre.length > 0){
+return ''
 }else{
 return pre;
 }
@@ -54,7 +65,13 @@ setJob((pre)=>(pre.length>0? '': pre));
 }}> SUBMIT </button>
 </div>
 <div className="mainRight">
-
+{myData?.map(({image,name,city,job},index)=><Unit
+image={image}
+name={name}
+city={city}
+job={job}
+key={index}
+ />)}
 </div>
 </div>)
 }

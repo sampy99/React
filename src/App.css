@@ -1,3 +1,42 @@
+.mainContainer{
+margin:0 auto;
+width: 90%;
+display: grid;
+grid-template-columns: 40% 60%;
+grid-template-rows:1;
+}
 
+.mainContainer .mainLeft{
+padding-right:20px;
+width:100%;
+display:flex;
+flex-direction: column;
+align-items:center;
+gap: 18px;
+}
 
+.mainContainer .mainLeft input{
+width:100%;
+padding:8px;
+}
 
+.mainContainer .mainRight{
+margin-right:20px;
+width:100%;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+grid-template-rows:auto;
+gap: 18px;
+align-items:center;
+}
+
+.mainContainer .mainRight .unitContainer p{
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.mainContainer .mainRight .unitContainer image{
+width:100%;
+object-fit:contain;
+}
