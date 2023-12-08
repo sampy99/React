@@ -1,28 +1,3 @@
-.mainContainer{
-width:100%;
-display:flex;
-flex-direction:column;
-align-items:center;
-}
-
-.mainBlockContainer{
-width: 90%;
-display: grid;
-grid-template-columns: repeat(4,1fr);
-grid-template-rows: auto;
-gap: 20px;
-}
-
-.mainBlockContainer img{
-width: 100%;
-object-fit: container;
-}
-
-.mainBlockContainer .mainBlockDetails p{
-display:flex;
-align-items:center;
-justify-content:space-between;
-}
 
 
 

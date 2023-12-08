@@ -1,59 +1,63 @@
 import "./App.css";
-import Main from "./Components/Main";
 import myData from "./Data/myData";
 import {useState} from "react";
 
+const App = ()=>{
 
-function App() {
+const [imageUrl,setImageUrl] = useState('');
+const [name,setName] = useState('');
+const [city,setCity] = useState('');
+const [job,setJob] = useState('');
 
+return(
+<div className="mainContainer">
+<div className="mainLeft">
+<input type='text' value={imageUrl} onChange={(e)=>{
+e.preventDefault()
+setImageUrl(e.target.value)
+}} />
 
-const [myVar,setMyVar] = useState({name:"Sampath",city:"Galle",Job:"Designing"});
+<input type='text' value={name} onChange={(e)=>{
+e.preventDefault()
+setName(e.target.value)
+}}/>
 
-const [myDataState,setMYDataState] = useState(myData);
+<input type='text' value={city} onChange={(e)=>{
+e.preventDefault()
+setCity(e.target.value)
+}}/>
 
-const clickHere=()=>{
-setMyVar ({
-...myVar,
-name:"Chathuranga",
-});
+<input type='text' value={job}
+onChange={(e)=>{
+e.preventDefault()
+setJob(e.target.value)
+}}/>
 
-setMYDataState([...myDataState,{
-name:'Ranil',
-city:'Clmb',
-job:'Politics',
-image:"https://th.bing.com/th/id/OIP.AYGWAaheOrkinQ0jCC9MMgHaE7?w=640&h=426&rs=1&pid=ImgDetMain",
-}])
-console.log(myDataState);
-};
+<button onClick={()=>{console.log({imageUrl,name,city,job})
 
-const mainBlock = myDataState.map(({name, image, city, job, index}) => {
-return <Main key={index} name={name} image={image} city={city} job={job} />;
-});
-
-  return (
-    <div className="mainContainer">
-    <div>
-    <h1>{myVar.name}</h1>
-    </div>
-    <div
-    className="mainBlockContainer">
-    {mainBlock}
-    <br>
-    </br>
-    <button style={
-    {
-    fontSize:'10px',
-    border:'1px solid red',
-    padding:'7px 12px'
-    }
-    }
-    onClick ={clickHere}
-    >
-    CLICK HERE
-    </button>
-    </div>
-    </div>
-  );
+//Long code using if
+setImageUrl((pre)=>{
+if(pre.length>0){
+return''
+}else{
+return pre;
 }
+});
+
+//using java script short code
+setName((pre)=>(pre.length>0? '': pre));
+
+setCity((pre)=>(pre.length>0? '': pre));
+
+setJob((pre)=>(pre.length>0? '': pre));
+
+}}> SUBMIT </button>
+</div>
+<div className="mainRight">
+
+</div>
+</div>)
+}
+
 
 export default App;
