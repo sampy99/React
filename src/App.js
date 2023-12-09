@@ -5,10 +5,12 @@ import Unit from "./Components/Unit"
 
 const App = ()=>{
 
-const [imageUrl,setImageUrl] = useState('');
-const [name,setName] = useState('');
-const [city,setCity] = useState('');
-const [job,setJob] = useState('');
+const [inputData,setInputData] = useState({
+imageUrl: '',
+name: '',
+city: '',
+job: ''
+})
 
 const [myData,setMyData] = useState([]);
 console.log(myData);
@@ -16,51 +18,75 @@ console.log(myData);
 return(
 <div className="mainContainer">
 <div className="mainLeft">
-<input type='text' value={imageUrl} onChange={(e)=>{
+
+<input type='text' value={inputData.imageUrl} onChange={(e)=>{
 e.preventDefault()
-setImageUrl(e.target.value)
+setInputData(pre=>({
+...pre,
+imageUrl:e.target.value
+}))
 }} />
 
-<input type='text' value={name} onChange={(e)=>{
+<input type='text' value={inputData.name} onChange={(e)=>{
 e.preventDefault()
-setName(e.target.value)
+setInputData(pre=>({
+...pre,
+name:e.target.value
+}))
 }}/>
 
-<input type='text' value={city} onChange={(e)=>{
+<input type='text' value={inputData.city} onChange={(e)=>{
 e.preventDefault()
-setCity(e.target.value)
+setInputData(pre=>({
+...pre,
+city:e.target.value
+}))
 }}/>
 
-<input type='text' value={job}
-onChange={(e)=>{
+<input type='text' value={inputData.job} onChange={(e)=>{
 e.preventDefault()
-setJob(e.target.value)
+setInputData(pre=>({
+...pre,
+job:e.target.value
+}))
 }}/>
 
 <button onClick = {()=> {setMyData(pre=>{
 return[...pre,{
-image: imageUrl,
-name,
-city,
-job,
+image: inputData.imageUrl,
+name: inputData.name,
+city: inputData.city,
+job: inputData.job,
 }]
 });
 
 //Long code using if
-setImageUrl((pre)=>{
-if(pre.length > 0){
-return ''
+setInputData((pre)=>{
+if(pre.imageUrl.length > 0){
+return {
+...pre,
+imageUrl:''
+}
 }else{
 return pre;
 }
 });
 
 //using java script short code
-setName((pre)=>(pre.length>0? '': pre));
+setInputData((pre)=>(pre.name.length>0? ({
+...pre,
+name:''
+}):pre));
 
-setCity((pre)=>(pre.length>0? '': pre));
+setInputData((pre)=>(pre.city.length>0? ({
+...pre,
+city:''
+}): pre));
 
-setJob((pre)=>(pre.length>0? '': pre));
+setInputData((pre)=>(pre.job.length>0? ({
+...pre,
+job:''
+}): pre));
 
 }}> SUBMIT </button>
 </div>
