@@ -1,7 +1,9 @@
 import "./App.css";
-import myData from "./Data/myData";
+//import myData from "./Data/myData";
 import {useState} from "react";
-import Unit from "./Components/Unit"
+import Unit from "./Components/Unit";
+import Header from "./Components/Header";
+import {Fragment} from "react";
 
 const App = ()=>{
 
@@ -16,10 +18,12 @@ const [myData,setMyData] = useState([]);
 console.log(myData);
 
 return(
+<Fragment>
+<Header />
 <div className="mainContainer">
 <div className="mainLeft">
 
-<input type='text' value={inputData.imageUrl} onChange={(e)=>{
+<input type='text' value={inputData.imageUrl} placeholder="Enter your image" onChange={(e)=>{
 e.preventDefault()
 setInputData(pre=>({
 ...pre,
@@ -27,7 +31,7 @@ imageUrl:e.target.value
 }))
 }} />
 
-<input type='text' value={inputData.name} onChange={(e)=>{
+<input type='text' value={inputData.name} placeholder="Enter your name" onChange={(e)=>{
 e.preventDefault()
 setInputData(pre=>({
 ...pre,
@@ -35,7 +39,7 @@ name:e.target.value
 }))
 }}/>
 
-<input type='text' value={inputData.city} onChange={(e)=>{
+<input type='text' value={inputData.city} placeholder="Enter your city" onChange={(e)=>{
 e.preventDefault()
 setInputData(pre=>({
 ...pre,
@@ -43,7 +47,7 @@ city:e.target.value
 }))
 }}/>
 
-<input type='text' value={inputData.job} onChange={(e)=>{
+<input type='text' value={inputData.job} placeholder="Enter your job" onChange={(e)=>{
 e.preventDefault()
 setInputData(pre=>({
 ...pre,
@@ -99,7 +103,9 @@ job={job}
 key={index}
  />)}
 </div>
-</div>)
+</div>
+</Fragment>
+)
 }
 
 
