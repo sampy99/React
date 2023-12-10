@@ -5,119 +5,50 @@ import Unit from "./Components/Unit";
 import Header from "./Components/Header";
 import {Fragment,useEffect} from "react";
 
-const App = ()=>{
+const App=()=>{
 
-const [inputData,setInputData] = useState({
-imageUrl: '',
-name: '',
-city: '',
-job: ''
-})
+const [apiId,setApiId] = useState('1')
+const [data,setData] = useState({})
 
-const [myData,setMyData] = useState([]);
-const [windowWidth,setWindowWidth] = useState(window.innerWidth);
+console.log(apiId)
+console.log(data)
 
 useEffect(()=>{
-window.addEventListener('resize',()=>{
-setWindowWidth(window.innerWidth);
-})
-console.log("use effect")
-return ()=>{
-console.log('use effect cleanup')
+console.log('useEffect running')
+if(apiId.length>0 && Number(apiId)>0 && (Number(apiId)<=100)){
+console.log('useEffect if condition');
 
-window.removeEventListener('resize',setWindowWidth)
-}
-},[inputData.name])
+const apiCall = async()=>{
+const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${apiId}`)
+const data = await res.json()
 
-return(
-<Fragment>
-<Header />
-<div className="mainContainer">
+if(data){
+setData(data)
+   }
+  }
 
-<div className="mainLeft">
-<h3>{windowWidth}</h3>
-<input type='text' value={inputData.imageUrl} placeholder="Enter your image" onChange={(e)=>{
+  apiCall()
+ }
+},[apiId])
+
+return (
+<div>
+<input
+type='text'
+value={apiId}
+onChange={(e)=>{
 e.preventDefault()
-setInputData(pre=>({
-...pre,
-imageUrl:e.target.value
-}))
-}} />
 
-<input type='text' value={inputData.name} placeholder="Enter your name" onChange={(e)=>{
-e.preventDefault()
-setInputData(pre=>({
-...pre,
-name:e.target.value
-}))
-}}/>
+setApiId(e.target.value)
 
-<input type='text' value={inputData.city} placeholder="Enter your city" onChange={(e)=>{
-e.preventDefault()
-setInputData(pre=>({
-...pre,
-city:e.target.value
-}))
-}}/>
+}}
+placeholder='Enter your ID'/>
 
-<input type='text' value={inputData.job} placeholder="Enter your job" onChange={(e)=>{
-e.preventDefault()
-setInputData(pre=>({
-...pre,
-job:e.target.value
-}))
-}}/>
-
-<button onClick = {()=> {setMyData(pre=>{
-return[...pre,{
-image: inputData.imageUrl,
-name: inputData.name,
-city: inputData.city,
-job: inputData.job,
-}]
-});
-
-//Long code using if
-setInputData((pre)=>{
-if(pre.imageUrl.length > 0){
-return { ...pre,
-imageUrl:'' }
-}else{
-return pre;
-}
-});
-
-//using java script short code
-
-
-setInputData((pre)=>(pre.name.length>0? ({
-...pre,
-name:''
-}):pre));
-
-setInputData((pre)=>(pre.city.length>0? ({
-...pre,
-city:''
-}): pre));
-
-setInputData((pre)=>(pre.job.length>0? ({
-...pre,
-job:''
-}): pre));
-
-}}> SUBMIT </button>
+{data&&(<div>
+<h2>{data.title}</h2>
+<p>{data.body}</p>
+</div>)}
 </div>
-<div className="mainRight">
-{myData?.map(({image,name,city,job},index)=><Unit
-image={image}
-name={name}
-city={city}
-job={job}
-key={index}
- />)}
-</div>
-</div>
-</Fragment>
 )
 }
 
