@@ -67,16 +67,16 @@ job: inputData.job,
 //Long code using if
 setInputData((pre)=>{
 if(pre.imageUrl.length > 0){
-return {
-...pre,
-imageUrl:''
-}
+return { ...pre,
+imageUrl:'' }
 }else{
 return pre;
 }
 });
 
 //using java script short code
+
+
 setInputData((pre)=>(pre.name.length>0? ({
 ...pre,
 name:''
