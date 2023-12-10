@@ -11,13 +11,21 @@ const Header = ()=>{
          <header className = "headerContainer">
          <h1>My <span>Header</span></h1>
          <nav>
-         <img src = {hMenu} alt=" menu" style={{
+
+         <ol>
+         <li>Home</li>
+         <li>About</li>
+         <li>Contact</li>
+         <li>Project</li>
+         </ol>
+
+         <img className="hMenu" src = {hMenu} alt=" menu" style={{
          width:'30px',
          cursor:'pointer',
          }}
 
          onClick={()=>{
-                  setMenuClick(true);
+                  setMenuClick((pre)=>(!pre ? true:pre));
                   }}
          />
 
@@ -29,7 +37,7 @@ const Header = ()=>{
          <img src = {closeMenu} alt="close menu" style={{width:'40px' }}
 
          onClick={()=>{
-                           setMenuClick(false);
+                           setMenuClick((pre)=>(pre ? false:pre));
                            }}
          />
          </div>

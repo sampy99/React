@@ -3,7 +3,7 @@ import "./App.css";
 import {useState} from "react";
 import Unit from "./Components/Unit";
 import Header from "./Components/Header";
-import {Fragment} from "react";
+import {Fragment,useEffect} from "react";
 
 const App = ()=>{
 
@@ -15,14 +15,27 @@ job: ''
 })
 
 const [myData,setMyData] = useState([]);
-console.log(myData);
+const [windowWidth,setWindowWidth] = useState(window.innerWidth);
+
+useEffect(()=>{
+window.addEventListener('resize',()=>{
+setWindowWidth(window.innerWidth);
+})
+console.log("use effect")
+return ()=>{
+console.log('use effect cleanup')
+
+window.removeEventListener('resize',setWindowWidth)
+}
+},[inputData.name])
 
 return(
 <Fragment>
 <Header />
 <div className="mainContainer">
-<div className="mainLeft">
 
+<div className="mainLeft">
+<h3>{windowWidth}</h3>
 <input type='text' value={inputData.imageUrl} placeholder="Enter your image" onChange={(e)=>{
 e.preventDefault()
 setInputData(pre=>({

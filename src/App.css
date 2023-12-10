@@ -11,6 +11,7 @@ z-index:100;
 display:flex;
 align-items:center;
 justify-content:space-between;
+
 }
 
 
@@ -29,6 +30,10 @@ gap:40px;
 position:relative;
 }
 
+.headerContainer nav ol{
+display:none;
+}
+
 .headerContainer nav ul{
 position:absolute;
 top:-40px;
@@ -40,6 +45,7 @@ display:flex;
 flex-direction:column;
 align-items:flex-start;
 gap:20px;
+transition:all 400ms ease-in;
 }
 
 .headerContainer .headerMenuClose{
@@ -102,5 +108,27 @@ justify-content:space-between;
 .mainContainer .mainRight .unitContainer image{
 width:100%;
 object-fit:contain;
+}
+
+
+@media only screen and (min-width: 768px) {
+.headerContainer nav ul,
+.headerContainer nav .hMenu {
+display:none;
+}
+.headerContainer nav ol{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:20px;
+}
+.headerContainer nav ol li{
+font-weight:bold;
+cursor:pointer;
+transition:all 400ms ease-in;
+}
+.headerContainer nav ol li:hover{
+color:red;
+}
 }
 
