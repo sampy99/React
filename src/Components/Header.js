@@ -1,4 +1,4 @@
-import closeMenu from "../Image/close1.svg";
+import closeMenu from "../Image/close.svg";
 import {useState} from 'react';
 import hMenu from "../Image/menu.svg";
 
